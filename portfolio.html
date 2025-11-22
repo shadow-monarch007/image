@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="theme-color" content="#d4a574">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Portfolio | Rajesh Photography</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="site-title">
+                <img src="logo.png" alt="Rajesh Photography" class="logo-img">
+                <span class="logo-text">Rajesh Photography</span>
+            </a>
+            <nav class="header-nav">
+                <a href="index.html#services" class="nav-link">Services</a>
+                <a href="index.html#about" class="nav-link">About</a>
+                <a href="index.html#contact" class="nav-link">Contact</a>
+                <a href="#menu" class="nav-link menu-trigger">View all projects</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Intro Section -->
+    <section class="intro" id="home">
+        <div class="intro-grid">
+            <!-- Featured portfolio items as intro -->
+        </div>
+    </section>
+
+    <!-- Portfolio List (Parallax Scroll) -->
+    <div class="portfolio-list" id="portfolio">
+        <!-- Portfolio items will be dynamically inserted -->
+    </div>
+
+    <!-- Parallax Title Overlay -->
+    <div class="parallax-title-container">
+        <div class="parallax-title parallax-title--front"></div>
+        <div class="parallax-title parallax-title--back"></div>
+    </div>
+
+    <!-- Scroll Number Indicator -->
+    <div class="scroll-number-container">
+        <div class="scroll-number scroll-number--front">
+            <div class="scroll-number-value">0</div>
+        </div>
+        <div class="scroll-number scroll-number--back">
+            <div class="scroll-number-value">0</div>
+        </div>
+    </div>
+
+    <!-- Menu Overlay -->
+    <div class="menu-overlay" id="menu">
+        <div class="menu-close">×</div>
+        <div class="menu-content">
+            <div class="menu-grid">
+                <!-- All projects listed here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="about-close">×</div>
+        <div class="about-content">
+            <h2>About</h2>
+            <p>Rajesh is a professional photographer based in Bangalore, specializing in weddings, pre-wedding shoots, and special events. With a passion for capturing authentic moments and emotions, Rajesh brings creativity and expertise to every shoot.</p>
+        </div>
+    </section>
+
+    <script src="portfolio-data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

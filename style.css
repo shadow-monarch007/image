@@ -1,0 +1,530 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --header-height: 80px;
+    --text-color: #000;
+    --bg-color: #fff;
+    --transition-speed: 0.6s;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    color: var(--text-color);
+    background: var(--bg-color);
+    overflow-x: hidden;
+    transition: background-color var(--transition-speed) ease;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body.is-light {
+    --text-color: #000;
+}
+
+body.is-dark {
+    --text-color: #fff;
+}
+
+/* Header */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--header-height);
+    z-index: 1000;
+    padding: 0 3vw;
+    display: flex;
+    align-items: center;
+    mix-blend-mode: difference;
+}
+
+.header-inner {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.site-title {
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    color: #fff;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-img {
+    height: 40px;
+    width: auto;
+    transition: opacity 0.3s ease;
+    filter: brightness(0) invert(1);
+}
+
+.logo-text {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.site-title:hover .logo-img {
+    opacity: 0.7;
+}
+
+.header-nav {
+    display: flex;
+    gap: 40px;
+}
+
+.nav-link {
+    font-size: 14px;
+    font-weight: 400;
+    text-decoration: none;
+    color: #fff;
+    letter-spacing: 0.3px;
+    transition: opacity 0.3s ease;
+}
+
+.nav-link:hover {
+    opacity: 0.6;
+}
+
+/* Intro Section */
+.intro {
+    min-height: 100vh;
+    padding: calc(var(--header-height) + 60px) 3vw 60px;
+}
+
+.intro-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.intro-item {
+    position: relative;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.intro-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.intro-item:hover img {
+    transform: scale(1.05);
+}
+
+/* Portfolio List - Parallax Section */
+.portfolio-list {
+    position: relative;
+}
+
+.portfolio-item {
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.portfolio-item-inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 10vw;
+}
+
+.portfolio-item-image-wrapper {
+    position: relative;
+    width: 80%;
+    max-width: 1000px;
+    height: 70vh;
+    will-change: transform;
+}
+
+.portfolio-item-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.portfolio-item-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    will-change: transform;
+    transform: scale(1.2);
+}
+
+/* Parallax Title Overlay */
+.parallax-title-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+    pointer-events: none;
+    width: 90%;
+    text-align: center;
+}
+
+.parallax-title {
+    font-size: clamp(40px, 8vw, 120px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    text-transform: uppercase;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    will-change: opacity, transform;
+}
+
+.parallax-title--front {
+    color: #fff;
+    mix-blend-mode: difference;
+    z-index: 2;
+}
+
+.parallax-title--back {
+    color: rgba(0, 0, 0, 0.03);
+    z-index: 1;
+}
+
+.parallax-title.active {
+    opacity: 1;
+}
+
+/* Scroll Number Indicator */
+.scroll-number-container {
+    position: fixed;
+    bottom: 40px;
+    right: 3vw;
+    z-index: 100;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    mix-blend-mode: difference;
+    pointer-events: none;
+}
+
+.scroll-number {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: #fff;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.scroll-number.active {
+    opacity: 1;
+}
+
+.scroll-number-value::before {
+    content: '00';
+}
+
+.scroll-number-value {
+    font-variant-numeric: tabular-nums;
+}
+
+/* Menu Overlay */
+.menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    z-index: 2000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+    overflow-y: auto;
+}
+
+.menu-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.menu-close {
+    position: fixed;
+    top: 30px;
+    right: 3vw;
+    font-size: 40px;
+    color: #fff;
+    cursor: pointer;
+    z-index: 2001;
+    line-height: 1;
+    transition: transform 0.3s ease;
+}
+
+.menu-close:hover {
+    transform: rotate(90deg);
+}
+
+.menu-content {
+    padding: 120px 3vw 60px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 40px;
+}
+
+.menu-item {
+    position: relative;
+    aspect-ratio: 3/4;
+    overflow: hidden;
+    cursor: pointer;
+    text-decoration: none;
+    display: block;
+}
+
+.menu-item-image {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.menu-item-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+    opacity: 0;
+}
+
+.menu-item-image img.loaded {
+    opacity: 1;
+}
+
+.menu-item:hover img {
+    transform: scale(1.08);
+}
+
+.menu-item-title {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    mix-blend-mode: difference;
+}
+
+.menu-item-number {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    mix-blend-mode: difference;
+}
+
+/* About Section */
+.about-section {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #f1f1f1;
+    z-index: 1500;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+
+.about-section.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.about-close {
+    position: fixed;
+    top: 30px;
+    right: 3vw;
+    font-size: 40px;
+    color: #000;
+    cursor: pointer;
+    z-index: 1501;
+    line-height: 1;
+    transition: transform 0.3s ease;
+}
+
+.about-close:hover {
+    transform: rotate(90deg);
+}
+
+.about-content {
+    position: relative;
+    z-index: 2;
+    padding: 120px 3vw;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.about-content h2 {
+    font-size: clamp(40px, 6vw, 80px);
+    font-weight: 700;
+    margin-bottom: 40px;
+    letter-spacing: -0.02em;
+}
+
+.about-content p {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.about-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.1;
+    z-index: 1;
+}
+
+.about-bg video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .header-nav {
+        gap: 15px;
+        font-size: 12px;
+    }
+    
+    .logo-img {
+        height: 35px;
+    }
+    
+    .logo-text {
+        font-size: 12px;
+    }
+    
+    .intro-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .menu-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .portfolio-item-image-wrapper {
+        width: 95%;
+        height: 60vh;
+    }
+    
+    .parallax-title {
+        font-size: clamp(30px, 10vw, 60px);
+    }
+    
+    .scroll-number {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-nav {
+        gap: 10px;
+    }
+    
+    .nav-link {
+        font-size: 11px;
+    }
+    
+    .parallax-title {
+        font-size: clamp(24px, 8vw, 50px);
+    }
+    
+    .portfolio-item-image-wrapper {
+        height: 50vh;
+    }
+}
+
+/* Touch device optimizations */
+@media (hover: none) and (pointer: coarse) {
+    .menu-item:hover,
+    .nav-link:hover {
+        transform: none;
+    }
+    
+    .menu-item:active {
+        transform: scale(0.98);
+    }
+}
+
+/* Loading State */
+img[data-src] {
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+img.loaded {
+    opacity: 1;
+}
+
+/* Smooth Scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Hide Scrollbar but keep functionality */
+body::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+}
+
+/* Performance Optimizations */
+.portfolio-item-image,
+.portfolio-item-image img {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
