@@ -73,9 +73,11 @@ body.is-dark {
 }
 
 .logo-text {
-    font-size: 14px;
+    font-family: 'Cinzel', serif;
+    font-size: 16px;
     font-weight: 600;
-    letter-spacing: 1px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
 }
 
 .site-title:hover .logo-img {
@@ -94,6 +96,44 @@ body.is-dark {
     color: #fff;
     letter-spacing: 0.3px;
     transition: opacity 0.3s ease;
+}
+
+.menu-trigger {
+    font-family: 'Cinzel', serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 12px 32px;
+    background: linear-gradient(135deg, rgba(212, 165, 116, 0.15), rgba(192, 133, 82, 0.15));
+    border: 2px solid rgba(212, 165, 116, 0.8);
+    border-radius: 0;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 20px rgba(212, 165, 116, 0.3), inset 0 0 20px rgba(212, 165, 116, 0.1);
+}
+
+.menu-trigger::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(212, 165, 116, 0.4), transparent);
+    transition: left 0.5s;
+}
+
+.menu-trigger:hover::before {
+    left: 100%;
+}
+
+.menu-trigger:hover {
+    background: linear-gradient(135deg, rgba(212, 165, 116, 0.3), rgba(192, 133, 82, 0.3));
+    border-color: rgba(212, 165, 116, 1);
+    box-shadow: 0 0 30px rgba(212, 165, 116, 0.6), inset 0 0 30px rgba(212, 165, 116, 0.2);
+    transform: translateY(-2px);
 }
 
 .nav-link:hover {
@@ -204,12 +244,11 @@ body.is-dark {
     left: 0;
     width: 100%;
     opacity: 0;
-    transition: opacity 0.4s ease;
+    transition: opacity 0.4s ease, color 0.4s ease;
     will-change: opacity, transform;
 }
 
 .parallax-title--front {
-    color: #fff;
     mix-blend-mode: difference;
     z-index: 2;
 }

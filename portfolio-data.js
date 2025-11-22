@@ -2,7 +2,7 @@
 const PORTFOLIO_DATA = [
   {
     slug: 'grand-wedding-ceremony',
-    title: 'Grand Wedding Ceremony',
+    title: 'Grand Wedding',
     color: '#f4e8dc',
     isLightColor: true,
     image: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=1920&q=80',
@@ -10,7 +10,7 @@ const PORTFOLIO_DATA = [
   },
   {
     slug: 'pre-wedding-outdoor',
-    title: 'Pre-Wedding — Outdoor',
+    title: 'Pre-Wedding',
     color: '#e8d5c4',
     isLightColor: true,
     image: 'https://images.unsplash.com/photo-1606800052052-a08af7148866?w=1920&q=80',
@@ -18,7 +18,7 @@ const PORTFOLIO_DATA = [
   },
   {
     slug: 'traditional-south-indian',
-    title: 'Traditional South Indian Wedding',
+    title: 'Traditional Wedding',
     color: '#fef3e8',
     isLightColor: true,
     image: 'https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=1920&q=80',
@@ -26,7 +26,7 @@ const PORTFOLIO_DATA = [
   },
   {
     slug: 'destination-wedding-goa',
-    title: 'Destination Wedding — Goa',
+    title: 'Destination Wedding',
     color: '#dce5f0',
     isLightColor: true,
     image: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=1920&q=80',
@@ -34,7 +34,7 @@ const PORTFOLIO_DATA = [
   },
   {
     slug: 'candid-moments',
-    title: 'Candid Wedding Moments',
+    title: 'Candid Moments',
     color: '#f0e6db',
     isLightColor: true,
     image: 'https://images.unsplash.com/photo-1594623930572-300a3011d9ae?w=1920&q=80',
@@ -42,7 +42,7 @@ const PORTFOLIO_DATA = [
   },
   {
     slug: 'mehendi-ceremony',
-    title: 'Mehendi Ceremony',
+    title: 'Mehendi',
     color: '#d4a574',
     isLightColor: false,
     image: 'https://images.unsplash.com/photo-1587271449115-5a9291080a8a?w=1920&q=80',
@@ -50,7 +50,7 @@ const PORTFOLIO_DATA = [
   },
   {
     slug: 'sangeet-night',
-    title: 'Sangeet Night',
+    title: 'Sangeet',
     color: '#333333',
     isLightColor: false,
     image: 'https://images.unsplash.com/photo-1620503374956-c942862f0372?w=1920&q=80',
@@ -58,7 +58,7 @@ const PORTFOLIO_DATA = [
   },
   {
     slug: 'haldi-ceremony',
-    title: 'Haldi Ceremony',
+    title: 'Haldi',
     color: '#fef3c7',
     isLightColor: true,
     image: 'https://images.unsplash.com/photo-1606963142680-b4b2ab847d9c?w=1920&q=80',
@@ -66,7 +66,7 @@ const PORTFOLIO_DATA = [
   },
   {
     slug: 'engagement-shoot',
-    title: 'Engagement Photography',
+    title: 'Engagement',
     color: '#f5d5cb',
     isLightColor: true,
     image: 'https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=1920&q=80',
@@ -74,7 +74,7 @@ const PORTFOLIO_DATA = [
   },
   {
     slug: 'reception-evening',
-    title: 'Reception Evening',
+    title: 'Reception',
     color: '#2d3748',
     isLightColor: false,
     image: 'https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=1920&q=80',
@@ -82,7 +82,7 @@ const PORTFOLIO_DATA = [
   },
   {
     slug: 'pre-wedding-beach',
-    title: 'Pre-Wedding — Beach',
+    title: 'Beach Session',
     color: '#e0f2f7',
     isLightColor: true,
     image: 'https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?w=1920&q=80',
@@ -90,7 +90,7 @@ const PORTFOLIO_DATA = [
   },
   {
     slug: 'maternity-shoot',
-    title: 'Maternity Photography',
+    title: 'Maternity',
     color: '#f9e8e8',
     isLightColor: true,
     image: 'https://images.unsplash.com/photo-1493894473891-10fc1e5dbd22?w=1920&q=80',
@@ -98,7 +98,7 @@ const PORTFOLIO_DATA = [
   },
   {
     slug: 'baby-newborn',
-    title: 'Newborn Baby Photography',
+    title: 'Newborn',
     color: '#fef6e4',
     isLightColor: true,
     image: 'https://images.unsplash.com/photo-1555252333-9f8e92e65df9?w=1920&q=80',
@@ -106,7 +106,7 @@ const PORTFOLIO_DATA = [
   },
   {
     slug: 'family-portraits',
-    title: 'Family Portraits',
+    title: 'Family',
     color: '#e8ddd3',
     isLightColor: true,
     image: 'https://images.unsplash.com/photo-1511895426328-dc8714191300?w=1920&q=80',
@@ -114,7 +114,7 @@ const PORTFOLIO_DATA = [
   },
   {
     slug: 'birthday-celebration',
-    title: 'Birthday Celebration',
+    title: 'Birthday',
     color: '#fde8f4',
     isLightColor: true,
     image: 'https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=1920&q=80',
@@ -122,7 +122,7 @@ const PORTFOLIO_DATA = [
   },
   {
     slug: 'corporate-event',
-    title: 'Corporate Event',
+    title: 'Corporate',
     color: '#333333',
     isLightColor: false,
     image: 'https://images.unsplash.com/photo-1511578314322-379afb476865?w=1920&q=80',
@@ -130,7 +130,7 @@ const PORTFOLIO_DATA = [
   },
   {
     slug: 'outdoor-pre-wedding',
-    title: 'Pre-Wedding — Nature',
+    title: 'Nature Session',
     color: '#d4e5d4',
     isLightColor: true,
     image: 'https://images.unsplash.com/photo-1537633552985-df8429e8048b?w=1920&q=80',
@@ -138,7 +138,7 @@ const PORTFOLIO_DATA = [
   },
   {
     slug: 'temple-wedding',
-    title: 'Temple Wedding',
+    title: 'Temple',
     color: '#f4ead5',
     isLightColor: true,
     image: 'https://images.unsplash.com/photo-1600103220788-c4c3f1f43c7f?w=1920&q=80',
@@ -146,7 +146,7 @@ const PORTFOLIO_DATA = [
   },
   {
     slug: 'couple-portraits',
-    title: 'Couple Portraits',
+    title: 'Couple',
     color: '#e8d4d8',
     isLightColor: true,
     image: 'https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=1920&q=80',

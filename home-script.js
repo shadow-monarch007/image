@@ -10,6 +10,8 @@ class HomePage {
         this.setupFormHandler();
         this.setupMobileMenu();
         this.observeElements();
+        this.setupParallax();
+        this.setupServiceCardTilt();
         
         // Header scroll effect
         window.addEventListener('scroll', () => {
@@ -111,6 +113,53 @@ class HomePage {
         }
     }
 
+    // Hero parallax effect
+    setupParallax() {
+        console.log('🎨 Setting up parallax effect...');
+        const heroImage = document.querySelector('.hero-image');
+        if (heroImage) {
+            console.log('✅ Hero image found, parallax active');
+            let ticking = false;
+            window.addEventListener('scroll', () => {
+                if (!ticking) {
+                    window.requestAnimationFrame(() => {
+                        const scrolled = window.pageYOffset;
+                        const parallaxSpeed = 0.5;
+                        heroImage.style.transform = `translateY(${scrolled * parallaxSpeed}px) scale(1.1)`;
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            });
+        } else {
+            console.log('❌ Hero image not found');
+        }
+    }
+
+    // Service card 3D tilt effect
+    setupServiceCardTilt() {
+        console.log('🎯 Setting up card tilt effect...');
+        const cards = document.querySelectorAll('.service-card');
+        console.log(`✅ Found ${cards.length} service cards`);
+        cards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = (y - centerY) / 15;
+                const rotateY = (centerX - x) / 15;
+                
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px)`;
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
+            });
+        });
+    }
+
     // Intersection Observer for fade-in animations
     observeElements() {
         const fadeElements = document.querySelectorAll('.service-card, .featured-item, .about-grid, .contact-grid');
@@ -121,16 +170,16 @@ class HomePage {
         };
 
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
+            entries.forEach((entry, index) => {
                 if (entry.isIntersecting) {
                     entry.target.style.opacity = '0';
                     entry.target.style.transform = 'translateY(30px)';
                     
                     setTimeout(() => {
-                        entry.target.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                        entry.target.style.transition = 'opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
                         entry.target.style.opacity = '1';
                         entry.target.style.transform = 'translateY(0)';
-                    }, 100);
+                    }, 100 + (index * 100));
                     
                     observer.unobserve(entry.target);
                 }

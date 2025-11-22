@@ -223,7 +223,7 @@ class PortfolioSite {
             document.body.classList.toggle('is-dark', !isLight);
             
             // Update title
-            this.updateTitle(title);
+            this.updateTitle(title, isLight);
             
             // Update scroll number
             this.updateScrollNumber(itemIndex);
@@ -231,12 +231,15 @@ class PortfolioSite {
     }
 
     // Update parallax title
-    updateTitle(title) {
+    updateTitle(title, isLight) {
         const titleFront = document.querySelector('.parallax-title--front');
         const titleBack = document.querySelector('.parallax-title--back');
         
         titleFront.textContent = title;
         titleBack.textContent = title;
+        
+        // Set contrasting text color
+        titleFront.style.color = isLight ? '#1a1a1a' : '#ffffff';
         
         // Trigger animation
         titleFront.classList.remove('active');
