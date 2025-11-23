@@ -178,6 +178,8 @@ class PortfolioSite {
     handleScroll() {
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
         const portfolioItems = document.querySelectorAll('.portfolio-item');
+        let closestItem = null;
+        let closestDistance = Infinity;
         
         portfolioItems.forEach((item, index) => {
             const rect = item.getBoundingClientRect();
@@ -196,8 +198,34 @@ class PortfolioSite {
                     img.style.transform = `scale(1.2) translateY(${parallaxAmount * 0.3}px)`;
                 }
                 
-                // Update active states when item is centered
-                if (itemTop < windowHeight / 2 && itemTop > -itemHeight / 2) {
+                // Find closest item to center
+                const centerDistance = Math.abs(itemTop - windowHeight / 2);
+                if (centerDistance < closestDistance) {
+                    closestDistance = centerDistance;
+                    closestItem = { item, index };
+                }
+            }
+        });
+        
+        // Update active state only for the closest centered item
+        if (closestItem && closestDistance < window.innerHeight * 0.4) {
+            this.updateActiveItem(closestItem.index);
+        } else {
+            // Clear title when no item is centered
+            this.clearTitle();
+        }
+    }
+    
+    // Clear title when scrolling between items
+    clearTitle() {
+        const titleFront = document.querySelector('.parallax-title--front');
+        const titleBack = document.querySelector('.parallax-title--back');
+        
+        if (titleFront && titleBack) {
+            titleFront.classList.remove('active');
+            titleBack.classList.remove('active');
+        }
+    }
                     this.setActiveItem(index);
                 }
             }

@@ -5,6 +5,11 @@
     box-sizing: border-box;
 }
 
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
 :root {
     --header-height: 80px;
     --text-color: #000;
@@ -17,11 +22,19 @@ body {
     color: var(--text-color);
     background: var(--bg-color);
     overflow-x: hidden;
+    width: 100%;
+    position: relative;
     transition: background-color var(--transition-speed) ease;
     -webkit-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
 }
 
 body.is-light {
@@ -148,7 +161,7 @@ body.is-dark {
 
 .intro-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 20px;
     max-width: 1200px;
     margin: 0 auto;
@@ -230,22 +243,26 @@ body.is-dark {
     z-index: 100;
     pointer-events: none;
     width: 90%;
+    max-width: 1400px;
     text-align: center;
 }
 
 .parallax-title {
-    font-size: clamp(40px, 8vw, 120px);
+    font-size: clamp(32px, 7vw, 100px);
     font-weight: 700;
     letter-spacing: -0.02em;
-    line-height: 1;
+    line-height: 1.1;
     text-transform: uppercase;
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     opacity: 0;
-    transition: opacity 0.4s ease, color 0.4s ease;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out, color 0.3s ease;
     will-change: opacity, transform;
+    white-space: normal;
+    word-break: break-word;
 }
 
 .parallax-title--front {
@@ -260,6 +277,7 @@ body.is-dark {
 
 .parallax-title.active {
     opacity: 1;
+    transform: translateY(0);
 }
 
 /* Scroll Number Indicator */
@@ -487,26 +505,28 @@ body.is-dark {
     }
     
     .intro-grid {
-        grid-template-columns: 1fr;
-        gap: 15px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
     }
     
     .menu-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
     }
     
     .portfolio-item-image-wrapper {
-        width: 95%;
-        height: 60vh;
+        width: 90%;
+        height: 65vh;
     }
     
     .parallax-title {
-        font-size: clamp(30px, 10vw, 60px);
+        font-size: clamp(28px, 8vw, 55px);
     }
     
     .scroll-number {
-        font-size: 14px;
+        font-size: 13px;
+        bottom: 30px;
+        right: 15px;
     }
 }
 
@@ -519,12 +539,19 @@ body.is-dark {
         font-size: 11px;
     }
     
+    .intro-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+    }
+    
     .parallax-title {
-        font-size: clamp(24px, 8vw, 50px);
+        font-size: clamp(22px, 7vw, 40px);
+        padding: 0 10px;
     }
     
     .portfolio-item-image-wrapper {
-        height: 50vh;
+        width: 95%;
+        height: 55vh;
     }
 }
 
