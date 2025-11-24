@@ -228,3 +228,69 @@ window.addEventListener('load', () => {
         heroImage.style.opacity = '1';
     }
 });
+
+/*
+  HAMBURGER FALLBACK - Phase 1 Responsive Fix
+  Place this script just before </body>.
+  Purpose: defensive fallback to toggle common hamburger/menu patterns,
+  set aria-expanded, and toggle an "open" class on the menu element.
+*/
+
+(function() {
+    'use strict';
+
+    // Collect candidate toggles (common selectors)
+    var toggles = Array.prototype.slice.call(
+        document.querySelectorAll('.hamburger, .menu-toggle, .nav-toggle, .menu-button, .mobile-menu-toggle, button[aria-expanded]')
+    );
+
+    if (!toggles.length) return;
+
+    // Helper: find the controlled menu for a toggle element
+    function findMenu(toggle) {
+        var controlId = toggle.getAttribute('aria-controls') || toggle.dataset.target || toggle.getAttribute('data-target');
+        if (controlId) {
+            var byId = document.getElementById(controlId);
+            if (byId) return byId;
+            var bySelector = document.querySelector('#' + controlId);
+            if (bySelector) return bySelector;
+        }
+        // Fallback common nav selectors
+        return document.querySelector('.site-nav, .nav-menu, .nav, .main-nav, .menu, nav');
+    }
+
+    // Toggle handler
+    function handleToggleClick(e) {
+        e.preventDefault();
+        var toggle = e.currentTarget;
+        var menu = findMenu(toggle);
+
+        if (menu) {
+            // Toggle class on menu and set aria-expanded on the toggle for accessibility
+            var nowOpen = menu.classList.toggle('active');
+            toggle.setAttribute('aria-expanded', nowOpen ? 'true' : 'false');
+            // Keep visual state on the toggle as well
+            toggle.classList.toggle('active', nowOpen);
+        } else {
+            // If no menu found, at least toggle state on the toggle element
+            var expanded = toggle.getAttribute('aria-expanded') === 'true';
+            toggle.setAttribute('aria-expanded', (!expanded).toString());
+            toggle.classList.toggle('active');
+        }
+    }
+
+    // Attach listeners to all toggles
+    toggles.forEach(function (t) {
+        // Only attach if not already handled by other scripts
+        if (!t.__hamburgerFallbackAttached) {
+            t.addEventListener('click', handleToggleClick, { passive: false });
+            t.addEventListener('keydown', function (e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    handleToggleClick({ currentTarget: t, preventDefault: function(){} });
+                }
+            }, { passive: false });
+            t.__hamburgerFallbackAttached = true;
+        }
+    });
+})();

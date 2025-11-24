@@ -1219,3 +1219,180 @@ img {
     opacity: 1;
     transform: translateY(0);
 }
+
+/* ======================================== */
+/* MOBILE OVERRIDE PATCH - Phase 1 Responsive Fix */
+/* ALL rules scoped to mobile only (max-width: 768px) */
+/* ======================================== */
+
+/* Utility: hide on mobile, visible on desktop */
+@media (max-width: 768px) {
+    .hide-mobile {
+        display: none !important;
+    }
+}
+
+/* Mobile-focused overrides - ONLY applies to screens <= 768px */
+@media (max-width: 768px) {
+    html, body {
+        overflow-x: hidden !important;
+    }
+
+    /* Ensure hero and related elements respect viewport on mobile */
+    .hero,
+    .hero-background,
+    .hero-content,
+    .hero-inner {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        overflow-x: hidden !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Safe container padding */
+    .container,
+    .site-container,
+    .wrap,
+    .content,
+    .page-inner {
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+        box-sizing: border-box !important;
+        min-width: 0 !important;
+    }
+
+    /* Prevent hero content overflow */
+    .hero-inner,
+    .hero-content {
+        padding-left: 8px !important;
+        padding-right: 8px !important;
+        box-sizing: border-box !important;
+        min-width: 0 !important;
+    }
+
+    /* Scroll indicator: centered above safe-area inset */
+    .scroll-indicator {
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        bottom: calc(12px + env(safe-area-inset-bottom, 0px)) !important;
+    }
+
+    /* Header and hamburger tap-area improvements */
+    .hamburger,
+    .menu-toggle,
+    .nav-toggle,
+    .menu-button,
+    .mobile-menu-toggle,
+    button[aria-expanded] {
+        min-width: 44px !important;
+        min-height: 44px !important;
+        touch-action: manipulation !important;
+    }
+
+    /* Embedded media safe sizing */
+    iframe,
+    video,
+    embed,
+    object {
+        max-width: 100% !important;
+        width: 100% !important;
+        height: auto !important;
+    }
+
+    /* ===== SERVICES GRID - Stack vertically on mobile ===== */
+    .services-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 16px !important;
+        align-items: center !important;
+    }
+
+    .service-card {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-height: 200px !important;
+        height: auto !important;
+        flex: none !important;
+    }
+
+    /* ===== HERO BUTTONS - Smaller on mobile ===== */
+    .hero-buttons {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 12px !important;
+        align-items: center !important;
+        width: 100% !important;
+    }
+
+    .hero-buttons .btn {
+        width: 100% !important;
+        max-width: 280px !important;
+        font-size: 14px !important;
+        padding: 12px 24px !important;
+    }
+
+    /* ===== ABOUT SECTION - Card style on mobile ===== */
+    .about-content {
+        background: #ffffff !important;
+        border-radius: 16px !important;
+        padding: 24px !important;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08) !important;
+        margin: 16px 0 !important;
+    }
+
+    .about-text {
+        font-size: 15px !important;
+        line-height: 1.7 !important;
+        margin-bottom: 16px !important;
+        color: #2c2c2c !important;
+    }
+
+    .about-features {
+        margin-top: 20px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 12px !important;
+    }
+
+    .about-feature {
+        display: flex !important;
+        align-items: center !important;
+        gap: 10px !important;
+        padding: 10px !important;
+        background: #fafafa !important;
+        border-radius: 8px !important;
+        font-size: 14px !important;
+    }
+
+    .feature-icon {
+        color: #d4a574 !important;
+        font-weight: bold !important;
+        font-size: 16px !important;
+    }
+}
+
+/* Extra-cautious rules for very small phones */
+@media (max-width: 420px) {
+    .container,
+    .site-container,
+    .wrap,
+    .content,
+    .page-inner {
+        padding-left: 12px !important;
+        padding-right: 12px !important;
+    }
+
+    .hero-buttons .btn {
+        max-width: 240px !important;
+        font-size: 13px !important;
+        padding: 10px 20px !important;
+    }
+
+    .about-content {
+        padding: 20px !important;
+        border-radius: 12px !important;
+    }
+}
+
+/* End of mobile-overrides.css */

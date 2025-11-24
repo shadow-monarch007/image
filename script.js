@@ -226,11 +226,6 @@ class PortfolioSite {
             titleBack.classList.remove('active');
         }
     }
-                    this.setActiveItem(index);
-                }
-            }
-        });
-    }
 
     // Set active portfolio item
     setActiveItem(index) {
