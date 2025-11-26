@@ -209,7 +209,7 @@ class PortfolioSite {
         
         // Update active state only for the closest centered item
         if (closestItem && closestDistance < window.innerHeight * 0.4) {
-            this.updateActiveItem(closestItem.index);
+            this.setActiveItem(closestItem.index);
         } else {
             // Clear title when no item is centered
             this.clearTitle();

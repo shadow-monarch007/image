@@ -294,3 +294,33 @@ window.addEventListener('load', () => {
         }
     });
 })();
+
+// Hamburger menu auto-close and visibility control
+(function() {
+  function isHeroInView() {
+    var hero = document.querySelector('.hero');
+    if (!hero) return false;
+    var rect = hero.getBoundingClientRect();
+    return rect.bottom > 0 && rect.top < window.innerHeight;
+  }
+  var menuToggle = document.querySelector('.mobile-menu-toggle');
+  var navMenu = document.querySelector('.nav-menu');
+  function closeMenu() {
+    if (navMenu && navMenu.classList.contains('active')) {
+      navMenu.classList.remove('active');
+      if (menuToggle) menuToggle.classList.remove('active');
+    }
+  }
+  function updateMenuToggleVisibility() {
+    if (menuToggle) {
+      menuToggle.style.display = isHeroInView() ? 'flex' : 'none';
+    }
+  }
+  window.addEventListener('scroll', function() {
+    updateMenuToggleVisibility();
+    if (!isHeroInView()) {
+      closeMenu();
+    }
+  });
+  document.addEventListener('DOMContentLoaded', updateMenuToggleVisibility);
+})();
